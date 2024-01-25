@@ -4,8 +4,8 @@ from machine import Pin
 import time
 from machine import ADC
 
-ssid = 'YNWA'
-password = '123456789'
+ssid = 'TP-Link_0662'
+password = '40354651'
 wifi = network.WLAN(network.STA_IF)
 wifi.active(True)
 wifi.connect(ssid, password)
@@ -14,11 +14,10 @@ while not wifi.isconnected():
     time.sleep(1)
     
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-#server_address = ('192.168.137.142', 12345)
-server_address = ('192.168.137.142', 12345)
+server_address = ('192.168.1.100', 12345)
 udp_socket.bind(('0.0.0.0', 12345))
 
-pir = Pin(14, Pin.IN, Pin.PULL_UP)
+pir = Pin(33, Pin.IN, Pin.PULL_UP)
 sensor = ADC(Pin(36))
 sensor.width(ADC.WIDTH_10BIT)
 sensor.atten(ADC.ATTN_11DB)
